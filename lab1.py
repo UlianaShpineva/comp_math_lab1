@@ -42,11 +42,12 @@ class Solver:
     M: int = 100
 
     def is_diag(self) -> bool:
-        flag = True
+        flag = False
         for i in range(self.size):
-            if sum(map(abs, self.matrix[i])) - 2 * abs(self.matrix[i][i]) > 0:
-                flag = False
-                break
+            if sum(map(abs, self.matrix[i])) - 2 * abs(self.matrix[i][i]) < 0:
+                flag = True
+            elif sum(map(abs, self.matrix[i])) - 2 * abs(self.matrix[i][i]) > 0:
+                return False
         return flag
 
     def to_diag(self) -> None:
