@@ -51,8 +51,8 @@ class Solver:
 
     def to_diag(self) -> None:
         for i in range(self.size):
-            max_in_line = max(self.matrix[i][i:])
-            max_in_column = max(self.get_column(i)[i:])
+            max_in_line = max(map(abs, self.matrix[i][i:]))
+            max_in_column = max(map(abs, self.get_column(i)[i:]))
             if max_in_column >= max_in_line:
                 line = self.get_column(i)[i:].index(max_in_line) + i
                 self.matrix[i], self.matrix[line] = self.matrix[line], self.matrix[i]
